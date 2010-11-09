@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 1.6.0_03-b05 (Sun Microsystems Inc.)
+Export-Package: ca.ubc.spl.fishtail,ca.ubc.spl.fishtail.actions,ca.ubc
+ .spl.fishtail.model,ca.ubc.spl.fishtail.model.engine,ca.ubc.spl.fisht
+ ail.model.parser,ca.ubc.spl.fishtail.model.scoring,ca.ubc.spl.fishtai
+ l.monitor,ca.ubc.spl.fishtail.preferences,ca.ubc.spl.fishtail.survey,
+ ca.ubc.spl.fishtail.views,ca.ubc.spl.fishtail.wizards
+Bundle-ClassPath: .
+Bundle-Name: Fishtail
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.mylyn.context.ui,
+ org.eclipse.mylyn.tasks.ui,
+ org.eclipse.mylyn.context.core,
+ org.eclipse.mylyn.monitor.core,
+ org.eclipse.jdt.core,
+ org.eclipse.mylyn.java.ui,
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide,
+ org.eclipse.mylyn.tasks.core,
+ org.eclipse.mylyn.commons.core;bundle-version="3.4.0",
+ org.eclipse.mylyn.commons.net;bundle-version="3.4.1"
+Bundle-Vendor: UBC
+Eclipse-LazyStart: true
+Bundle-Version: 0.1.0.200712071601
+Bundle-ManifestVersion: 2
+Bundle-Activator: ca.ubc.spl.fishtail.FishtailPlugin
+Bundle-SymbolicName: ca.ubc.spl.fishtail;singleton:=true
+Import-Package: org.apache.xerces.impl,org.apache.xerces.parsers,org.a
+ pache.xerces.util,org.apache.xerces.xni,org.apache.xerces.xni.parser
+
