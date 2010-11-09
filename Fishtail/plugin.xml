@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="ca.ubc.spl.fishtail.category.views"
+            name="Fishtail">
+      </category>
+      <view
+            allowMultiple="false"
+            category="ca.ubc.spl.fishtail.category.views"
+            class="ca.ubc.spl.fishtail.views.SearchView"
+            icon="images/fish.png"
+            id="ca.ubc.spl.fishtail.views.SearchView"
+            name="Fishtail">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspectives">
+         <view
+               id="ca.ubc.spl.fishtail.views.SearchView"
+               ratio="0.5"
+               relationship="stack"
+               relative="org.eclipse.ui.views.TaskList"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="ca.ubc.spl.fishtail.actionSet1"
+            description="Fishtail Action Set"
+            visible="false"
+            label="Fishtail Action Set">
+         <action
+               class="ca.ubc.spl.fishtail.actions.OpenInplaceSearchAction"
+               definitionId="ca.ubc.spl.fishtail.actions.commands.open.fishtail.search"
+               id="ca.ubc.spl.fishtail.actions.open.fishtail.search"
+               label="Fishtail Inplace View">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="ca.ubc.spl.fishtail.category.commands"
+            name="Fishtail Commands"
+            description="Fishtail Command Category">
+      </category>
+      
+      <command
+            name="Fishtail Inplace Search"
+            description="Fishtail Inplace Search"
+            id="ca.ubc.spl.fishtail.actions.commands.open.fishtail.search"
+            categoryId="ca.ubc.spl.fishtail.category.commands">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="ca.ubc.spl.fishtail.actions.commands.open.fishtail.search"
+            contextId="org.eclipse.ui.globalScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M3+F7">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="ca.ubc.spl.fishtail.preferences.PreferencePage"
+            id="ca.ubc.spl.fishtail.preferences.PreferencePage"
+            name="Fishtail">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="ca.ubc.spl.fishtail.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   
+	<extension point="org.eclipse.ui.newWizards">
+     <category
+           id="ca.ubc.spl.fishtail"
+           name="Fishtail">
+     </category>
+     <wizard
+           category="ca.ubc.spl.fishtail"
+           class="ca.ubc.spl.fishtail.wizards.SurveyWizard"
+           icon="images/fish.png"
+           id="ca.ubc.spl.fishtail.wizards.SurveyWizard"
+           name="Fishtail Survey">
+     </wizard>
+   	</extension>
+</plugin>
