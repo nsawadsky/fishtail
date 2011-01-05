@@ -83,13 +83,11 @@ public class GoogleSearchEngine
       if (this.token.getType() == HtmlStreamTokenizer.Token.TAG) {
         this.htmlTag = ((HtmlTag)tval);
         tag = this.htmlTag.getTagName();
-        if (tag.equals("font")) {
-          String fontContent = createFullNodeValueString("font", true);
-          if (fontContent.startsWith("Results")) {
-            int start = fontContent.indexOf("of") + 3;
-            int end = fontContent.indexOf(" for");
-            return getGoogleInt(fontContent.substring(start, end));
-          }
+        if (tag.equals("div") && "resultStats".equals(htmlTag.getAttribute("id"))) {
+          String resultStatsContent = createFullNodeValueString("div", true);
+          int start = "About ".length();
+          int end = resultStatsContent.indexOf(" results");
+          return getGoogleInt(resultStatsContent.substring(start, end));
         }
       } else {
         tag = "";
@@ -147,7 +145,7 @@ public class GoogleSearchEngine
       }
 
       if ((this.token.getType() != HtmlStreamTokenizer.Token.EOF) && (
-        (!"div".equalsIgnoreCase(tag)) || (!
+        (!"li".equalsIgnoreCase(tag)) || (!
         "g".equalsIgnoreCase(classAttr))))
         continue;
       if (this.token.getType() == HtmlStreamTokenizer.Token.EOF)
@@ -175,6 +173,7 @@ public class GoogleSearchEngine
 
     url = this.htmlTag.getAttribute("href");
     name = createFullNodeValueString("a", true);
+    /*
     do
     {
       this.token = this.tokenizer.nextToken();
@@ -203,6 +202,7 @@ public class GoogleSearchEngine
       "font".equalsIgnoreCase(tag)));
 
     desc = createFullNodeValueString("br", false);
+    */
 
     SearchHit hit = new SearchHit(this, name, url, desc);
     this.hits.add(hit);
@@ -223,10 +223,12 @@ public class GoogleSearchEngine
 
   private static int getGoogleInt(String str) {
     int parseInt = 2147483647;
+    /*
     str = str.trim();
     int i = str.indexOf("about");
     if (i >= 0)
       str = dropPunctuation(str.substring(i + 6));
+    */
     try
     {
       parseInt = Integer.parseInt(str);
