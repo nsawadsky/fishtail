@@ -223,12 +223,14 @@ public class GoogleSearchEngine
 
   private static int getGoogleInt(String str) {
     int parseInt = 2147483647;
+    
     /*
     str = str.trim();
     int i = str.indexOf("about");
     if (i >= 0)
       str = dropPunctuation(str.substring(i + 6));
     */
+    str = dropPunctuation(str);
     try
     {
       parseInt = Integer.parseInt(str);
